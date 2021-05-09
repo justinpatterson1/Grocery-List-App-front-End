@@ -169,3 +169,8 @@ hr
 {
     padding-right:10px ;
 }
+
+.dynamic-div
+{
+    width: 100%;
+}

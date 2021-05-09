@@ -1,11 +1,11 @@
 const main = (()=>
 {
-    let itemID = 2;
+ 
     const listings = document.querySelector("#items > div");
     const deleteItem = document.querySelector("#clear-items");
     const submit = document.querySelector("#submit-button");
     const textBox = document.querySelector("#text-box");
-   
+    let id =1;
 
     const backendHost = `http://localhost:4000`;
     fetch(`${backendHost}/items`)
@@ -13,12 +13,12 @@ const main = (()=>
     .then(json=>{
         json.data.forEach(item => {
             listings.innerHTML+=`
-            <div >
-                <div data-itemid="${item._id}" class="dynamic-items grid col-2 ">
+             <div>
+                <div data-divID="${item._id}" class="dynamic-items grid col-2 ">
                     ${item.name}
                         <div class="dynamic-functions">
                             <i data-itemid="${item._id}" id="edit" class="far fa-edit"></i>
-                            <i  id="trash" class="fas fa-trash"></i>
+                            <i data-itemid="${item._id}" id="trash" class="fas fa-trash"></i>
                         </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ const main = (()=>
 
 
     submit.addEventListener("click",()=>{
-        let ID = itemID+1;
+       
         fetch(`${backendHost}/items`,{
             method:"POST",
             headers: {
@@ -37,7 +37,6 @@ const main = (()=>
                 // 'Content-Type': 'application/x-www-form-urlencoded',
               },
             body:JSON.stringify({
-                id:ID,
                 name:textBox.value
             })
         })
@@ -86,7 +85,7 @@ const main = (()=>
 
         if(event.target.tagName == "I" && event.target.className=="fas fa-trash")
         {
-            
+            alert(event.target.dataset.itemid)
             const itemID = event.target.dataset.itemid;
             
             
@@ -103,25 +102,42 @@ const main = (()=>
 
         if(event.target.tagName == "I" && event.target.className=="far fa-edit")
         {
-
-           
-             for(let i=0;i<listings.children.length;i++)
-            {
+            
+              const id = event.target.dataset.itemid ;
+              if(event.target.parentNode.parentNode.dataset.divid == event.target.dataset.itemid )
+              {
                 
-                listings.children[1].addEventListener("click",()=>{
-                    console.log("hi")
-                })
-
-            }
-           /*fetch(`${backendHost}/items/1`,{
+                event.target.parentNode.parentNode.parentNode.innerHTML = 
+                ` <div data-itemid="${id}" >
+                <div class="dynamic-items grid col-2 ">
+                    <input type="text">
+                        <div class="dynamic-functions">
+                            <button  type="submit"> Submit </button>
+                        </div>
+                </div>
+            </div>`
+              }
+             
+             
+            //listings.children[0].innerHTML=`<div class="dynamic-items"> hi </div>`
+          
+        }
+    
+        if(event.target.tagName == 'BUTTON')
+        {
+            const itemID = event.target.parentNode.parentNode.parentNode.dataset.itemid;
+            //console.log(event.target.parentNode.parentNode.firstElementChild)
+            fetch(`${backendHost}/items/${itemID}`,{
                 method:"PUT",
                 headers: {
                     'Content-Type': 'application/json'
                     // 'Content-Type': 'application/x-www-form-urlencoded',
-                  }
-            })*/
+                  },
+                  body:JSON.stringify({
+                    name:event.target.parentNode.parentNode.firstElementChild.value
+                })
+            })
         }
-    
     })
     
 
