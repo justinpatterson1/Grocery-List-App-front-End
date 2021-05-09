@@ -1,0 +1,171 @@
+*
+{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body
+{
+    background-color: black;
+}
+
+input{
+    justify-self: center;
+    border-top-style:hidden;
+    border-right-style:hidden;
+    border-left-style:hidden;
+    border-bottom: 2px solid;
+    border-color: #99cd4e;
+    background-color: #bee08e;
+    width: 75%;
+    padding: 8.5px;
+    margin: 0 auto;
+    margin-top: 30px;
+    
+}
+button
+{
+    padding: 8.5px;
+    border-radius: 3.5px;
+    border: none;
+    background-color: #99cd4e;
+}
+
+hr
+{
+    background-color: gray;
+    text-align: center;
+}
+
+.container
+{
+    margin:0 auto;
+    max-width: 1400px;
+    width: 70%;
+}
+
+
+.grid
+{
+    display:grid;
+}
+
+.justify-self-center
+{
+    justify-self: center;
+}
+
+.justify-item-center
+{
+    justify-items: center;
+}
+.justify-item-end
+{
+    justify-items: flex-end;
+}
+
+.align-self-center
+{
+    align-self: center;
+}
+
+.align-item-center
+{
+    align-items: center;
+}
+
+
+.col-1
+{
+    grid-template-columns: repeat(1,1fr);
+}
+
+.col-2
+{
+    grid-template-columns: repeat(2,1fr);
+}
+
+#foundation
+{
+    height: 100vh;
+
+}
+
+#grocery-card
+{
+    align-self: center;
+    background-color: #e1e1e1;
+    border-radius: 50px;
+    justify-self: center;
+    width: 600px;
+    height: 580px;
+    
+    
+}
+
+#text-box-div
+{
+    width: 100%;
+    justify-items: flex-end;
+    
+}
+
+#housing
+{
+    width: 90%;
+    justify-items: center;
+    padding-left: 30px;
+}
+
+#list-div
+{
+    background-color: #bee08e;
+    width: 75%;
+    height: 350px;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 50px;
+    overflow-y: scroll;
+}
+
+#list-div::-webkit-scrollbar
+{
+    display: none;
+}
+
+#items
+{
+    padding: 15px 0px;
+    width: 350px;
+    height: 350px;
+    
+}
+
+#clear-item-div
+{
+    padding: 20px;
+    
+}
+
+#clear-item-div > button{
+    background-color: crimson;
+    color: #ffff;
+}
+
+.dynamic-items
+{
+    padding-top:30px;
+    padding-bottom: 5px;
+}
+
+.dynamic-functions
+{
+    text-align: right;
+    
+}
+
+.dynamic-functions>i
+{
+    padding-right:10px ;
+}
